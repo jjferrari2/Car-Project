@@ -144,9 +144,14 @@ void import_Cars(){
 int add_Cars(int* size, Car* *cars, int* count)
 	{
 		int selection, i = 0, arrayPos = 0;
+		
 		string make, model, driveTrain, seat, hybrid, selfDrive, WiFi, infotainment;
+		
 		int year, cylinders, seats, gears, tire, towing, weight;
+		
 		double mpg, price, bed, accel, trunk;
+		
+		int addCarPos = *count;
 		
 		cout	<< "Add New Car to System" << endl
 				<< "---------------------------------------" << endl
@@ -165,9 +170,11 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Truck" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					cin		>> make;
+					std::getline(std::cin >> std::ws, make);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Enter Model: ";
-					cin 	>> model;
+					std::getline(std::cin >> std::ws, model);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -187,13 +194,13 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Bed Length: ";
 					cin		>> bed;
 					
-					for(i; i < *count; i++)
+					for(i; i < addCarPos; i++)
 						{
 							arrayPos++;
 						}
 						
 					cars[arrayPos] = new Truck("Truck", make, model, year, cylinders, seats, gears, mpg, price, tire, towing, bed);
-					*count++;
+					addCarPos++;
 					
 					system("PAUSE");
 					system("CLS");
@@ -207,9 +214,11 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Performance Car" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					cin		>> make;
+					std::getline(std::cin >> std::ws, make);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Enter Model: ";
-					cin 	>> model;
+					std::getline(std::cin >> std::ws, model);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -227,15 +236,16 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Curb Weight: ";
 					cin		>> weight;
 					cout	<< "Enter Drivetrain Type (FWD/RWD/AWD): ";
-					cin		>> driveTrain;
+					std::getline(std::cin >> std::ws, driveTrain);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					
-					for(i; i < *count; i++)
+					for(i; i < addCarPos; i++)
 						{
 							arrayPos++;
 						}	
 							
 					cars[arrayPos] = new Performance("Performance", make, model, year, cylinders, seats, gears, mpg, price, accel, weight, driveTrain);
-					*count++;
+					addCarPos++;
 					
 					system("PAUSE");
 					system("CLS");
@@ -249,9 +259,11 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Sedan" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					cin		>> make;
+					std::getline(std::cin >> std::ws, make);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Enter Model: ";
-					cin 	>> model;
+					std::getline(std::cin >> std::ws, model);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -265,19 +277,21 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Price: $";
 					cin		>> price;
 					cout	<< "Enter Seat Material: ";
-					cin		>> seat;
+					std::getline(std::cin >> std::ws, seat);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Is this a Hybrid Vehicle? (Yes/No): ";
-					cin		>> hybrid;
+					std::getline(std::cin >> std::ws, hybrid);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Enter Trunk Capacity: ";
 					cin		>> trunk;
 					
-					for(i; i < *count; i++)
+					for(i; i < addCarPos; i++)
 						{
 							arrayPos++;
 						}	
 							
 					cars[arrayPos] = new Sedan("Sedan", make, model, year, cylinders, seats, gears, mpg, price, seat, hybrid, trunk);
-					*count++;
+					addCarPos++;
 					
 					system("PAUSE");
 					system("CLS");
@@ -290,9 +304,11 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Luxury Car" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					cin		>> make;
+					std::getline(std::cin >> std::ws, make);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Enter Model: ";
-					cin 	>> model;
+					std::getline(std::cin >> std::ws, model);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -306,26 +322,29 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Price: $";
 					cin		>> price;
 					cout	<< "Does this car have Self Driving? (Yes/No): ";
-					cin		>> selfDrive;
+					std::getline(std::cin >> std::ws, selfDrive);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Does this car have Wi-Fi Connectivity? (Yes/No): ";
-					cin		>> WiFi;
+					std::getline(std::cin >> std::ws, WiFi);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					cout	<< "Enter Infotainment System: ";
-					cin		>> infotainment;
+					std::getline(std::cin >> std::ws, infotainment);
+					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
 					
-					for(i; i < *count; i++)
+					for(i; i < addCarPos; i++)
 						{
 							arrayPos++;
 						}	
 							
 					cars[arrayPos] = new Luxury("Luxury", make, model, year, cylinders, seats, gears, mpg, price, selfDrive, WiFi, infotainment);
-					*count++;
+					addCarPos++;
 					
 					system("PAUSE");
 					system("CLS");
 					break;
 				}
 		}
-		return *count;
+		return addCarPos;
 	}
 
 void view_Cars(int* size, Car* *cars, int* count){
