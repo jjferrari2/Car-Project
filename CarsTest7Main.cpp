@@ -336,9 +336,119 @@ void view_Cars(int* size, Car* *cars, int* count){
 				cout << endl;
 			}
 }
-
 void search_Cars(int* size, Car* *cars, int* count){
-	
+		system("Cls");
+		int ogcount=*count;
+		string inputs;
+		double inputd;
+		int choice;
+		
+		do{
+		cout << "\t\tSearch Menu\n"
+		 << "\t\t------------------\n"
+		 << "\t\t1. View Cars equal to or less than Budget\n"
+		 << "\t\t2. View Cars by Type\n"
+		 << "\t\t3. View Cars by Name\n"
+		 << "\t\t4. View Cars by Brand\n"
+		 << "\t\t5. View Cars by equal to or less than Model Year \n"
+		 << "\t\t6. View Cars by MPG\n"
+		 << "\t\t7. Quit\n"
+		 << "\t\tChoose An Option: ";	
+		 
+		cin>>choice;
+		switch(choice){
+			case 1: {
+			cout << "Enter budget in dollars"<<endl;
+			cin>>inputd;
+			for(int i = 0; i < *count; i++){
+				if((inputd)>=cars[i]->getVehiclePrice()){
+						cars[i] -> printInfo();
+						cout<<endl;
+						//system("pause");
+						//system("cls");
+				}
+			}
+			system("pause");
+			system("cls");				
+				break;
+			}
+			case 2: {
+			cout << "Enter car Type"<<endl;
+			cin>>inputs;
+			for(int i = 0; i < *count; i++){
+				if((inputs)==cars[i]->getVehicleType()){
+					cars[i] -> printInfo();
+					
+					
+				}
+			}					
+				break;
+			}
+			system("pause");
+			system("cls");	
+			case 3: {
+		cout << "Enter car Name"<<endl;
+					cin>>inputs;
+			for(int i = 0; i < *count; i++){
+				if((inputs)==cars[i]->getVehicleModel()){
+					cars[i] -> printInfo();
+					cout<<endl;
+				}
+			}	
+				break;
+			}
+			case 4: {
+		cout << "Enter car Brand"<<endl;				
+					cin>>inputs;
+		for(int i = 0; i < *count; i++){
+			if((inputs)==cars[i]->getVehicleMake()){
+					cars[i] -> printInfo();
+					cout<<endl;
+					
+					
+			}
+		}	
+				break;
+			}
+			case 5: {
+		cout << "Enter car Model Year"<<endl;				
+						cin>>inputd;
+		for(int i = 0; i < *count; i++){
+			if((inputd)>=cars[i]->getVehicleYear()){
+					cars[i] -> printInfo();
+					cout<<endl;
+			}
+		}	
+				system("PAUSE");
+				system("CLS");
+				break;
+			}
+			case 6: {
+		cout << "Enter car MPG"<<endl;				
+						cin>>inputd;
+		for(int i = 0; i < *count; i++){
+			if((inputd)>=cars[i]->getMilesPerGallon()){
+					cars[i] -> printInfo();
+					cout<<endl;
+			}
+		}
+				system("PAUSE");
+				system("CLS");
+				break;
+			}
+			case 7: {
+				
+				cout << "\nGoodbye!\n";
+				break;
+			}
+			default: {
+				cout << "Invalid Choice.\n";
+				system("PAUSE");
+				system("CLS");
+				break;
+			}
+		}
+	}while(choice != 7);		
 }
 
 
