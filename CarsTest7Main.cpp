@@ -338,7 +338,6 @@ void view_Cars(int* size, Car* *cars, int* count){
 }
 void search_Cars(int* size, Car* *cars, int* count){
 		system("Cls");
-		
 		string inputs;
 		double inputd;
 		int choice;
@@ -350,8 +349,8 @@ void search_Cars(int* size, Car* *cars, int* count){
 		 << "\t\t2. View Cars by Type\n"
 		 << "\t\t3. View Cars by Name\n"
 		 << "\t\t4. View Cars by Brand\n"
-		 << "\t\t5. View Cars by equal to or less than Model Year \n"
-		 << "\t\t6. View Cars by MPG\n"
+		 << "\t\t5. View Cars by equal to or less than Entered Model Year \n"
+		 << "\t\t6. View Cars by equal to or less than Entered MPG\n"
 		 << "\t\t7. Quit\n"
 		 << "\t\tChoose An Option: ";	
 		 
@@ -450,6 +449,10 @@ void search_Cars(int* size, Car* *cars, int* count){
 		}
 	}while(choice != 7);		
 }
+
+
+
+
 
 
 
