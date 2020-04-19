@@ -13,70 +13,13 @@ void import_Cars(int*, Car* *cars, int*);
 int add_Cars(int*, Car* *cars, int*);
 void view_Cars(int*, Car* *cars, int*);
 void search_Cars(int*, Car* *cars, int*);
+void export_Cars(int*, Car* *cars, int*);
 
 int main()
 	{
 		int size = 100;
 		int count = 0;
-	
 		Car *cars[size];
-		cars[0] = new Truck("Truck", "Toyota", "Tacoma", 2020, 6, 5, 6, 18.8, 36599, 33.5, 6800, 6.5);
-		count++;
-		cars[1] = new Performance("Performance", "Porsche", "911", 2020, 6, 2, 8, 20.5, 85999, 3.5, 2700, "RWD");
-		count++;		
-		cars[2] = new Sedan("Sedan", "Toyota", "Avalon", 2020, 4, 5, 8, 32.5, 29689, "Cloth", "No", 23);	
-		count++;		
-		cars[3] = new Luxury("Luxury", "Lexus", "LX 570", 2020, 8, 8, 8, 13.5, 92775, "No", "Yes", "CarPlay");
-		count++;		
-		/*            
-		string data;
-		for(int i=0;i<100;i++){
-			data = cars[i] -> getVehicleType();
-			cout << "Vehicle type: " << data;
-	}
-		*/
-		ofstream carlist;
-		carlist.open("Car-List.txt");
-		string data;
-		//data = cars[1] -> getVehicleType();
-		//carlist << data;
-		/*
-		for(int i=0;i<4;i++){
-			data = cars[i] -> getVehicleMake();
-			carlist << data;
-			data = cars[i] -> getVehicleType();
-			carlist << data;
-			data = cars[i] -> getVehicleModel();
-			carlist << data;
-			data = cars[i] -> getVehicleYear();
-			carlist << data;
-			data = cars[i] -> getEngineCylinders();
-			carlist << data;
-			data = cars[i] -> getVehicleSeats();
-			carlist << data;
-			data = cars[i] -> getTransmissionGears();
-			carlist << data;
-			data = cars[i] -> getVehicleType();
-			carlist << data;
-			data = cars[i] -> getVehiclePrice();
-			carlist << data;
-			
-			carlist << "\n";
-		}
-		
-		carlist.close();
-		*/
-			
-		//Get Car Price (Can be used for looking up by budget)
-		//cout << "First Car's price is: " << cars[0] -> getPrice() << endl;
-		
-		//Get Car Type (Can be used for searching by car type)
-		//cout << "First Car's type is: " << cars[0] -> getVehicleType() << endl;
-		
-		
-		//int count = 4;
-		//int size = 100;
-		//Car *cars[size];
 		menu_Selection(&size, &*cars, &count);
 		return 0;
 	}
@@ -120,6 +63,7 @@ void menu_Selection(int* size, Car* *cars, int* count){
 			case 4: {
 				system("CLS");
 				cout << "\nGoodbye!\n";
+				export_Cars(size, &*cars, count);
 				system("PAUSE");
 				break;
 			}
@@ -133,9 +77,152 @@ void menu_Selection(int* size, Car* *cars, int* count){
 	}while(choice != 4);
 }	
 
-void import_Cars(){
-	
+void import_Cars(int* size, Car* *cars, int* count){
+	string strLine;
+		int intLine, lineNumber;
+		int linesRead = 0;
+		double dLine;
+		string vehicleType, vehicleMake, vehicleModel, driveTrain, material, hybrid, selfDrive, wifi, infotainment;
+		int vehicleYear, engineCylinders, vehicleSeats, transmissionGears, towing, weight;
+		double milesPerGallon, vehiclePrice, accel, tire, bed, trunk;
+		ifstream carlist;
+		carlist.open("Car-List.txt");
+		for(int i = 0; i < 4; i++){
+			lineNumber = 1;
+			for(int j = 0; j < 13; j++){
+				if(lineNumber == 2){
+					carlist >> strLine;
+					vehicleType = strLine;
+					cout << vehicleType << endl;
+				}
+				else if(lineNumber == 1){
+					carlist >> strLine;
+					vehicleMake = strLine;
+					cout << vehicleMake << endl;
+				}
+				else if(lineNumber == 3){
+					carlist >> strLine;
+					vehicleModel = strLine;
+					cout << vehicleModel << endl;
+				}
+				else if(lineNumber == 4){
+					carlist >> intLine;
+					vehicleYear = intLine;
+					cout << vehicleYear << endl;
+				}
+				else if(lineNumber == 5){
+					carlist >> intLine;
+					engineCylinders = intLine;
+					cout << engineCylinders << endl;
+				}
+				else if(lineNumber == 6){
+					carlist >> intLine;
+					vehicleSeats = intLine;
+					cout << vehicleSeats << endl;
+				}
+				else if(lineNumber == 7){
+					carlist >> intLine;
+					transmissionGears = intLine;
+					cout << transmissionGears << endl;
+				}
+				else if(lineNumber == 8){
+					carlist >> dLine;
+					milesPerGallon = dLine;
+					cout << milesPerGallon << endl;
+				}
+				else if(lineNumber == 9){
+					carlist >> dLine;
+					vehiclePrice = dLine;
+					cout << vehiclePrice << endl;
+				}
+				else if(lineNumber == 10){
+					if(vehicleType == "Truck"){
+						carlist >> intLine;
+						tire = intLine;
+						cout << tire << endl;
+					}
+					else if(vehicleType == "Performance"){
+						carlist >> dLine;
+						accel = dLine;
+						cout << accel << endl;
+					}
+					else if(vehicleType == "Sedan"){
+						carlist >> strLine;
+						material = strLine;
+						cout << material << endl;
+					}
+					else if(vehicleType == "Luxury"){
+						carlist >> strLine;
+						selfDrive = strLine;
+						cout << selfDrive << endl;
+					}
+				}	
+				else if(lineNumber == 11){
+					if(vehicleType == "Truck"){
+						carlist >> intLine;
+						towing = intLine;
+						cout << towing << endl;
+					}
+					else if(vehicleType == "Performance"){
+						carlist >> intLine;
+						weight = intLine;
+						cout << weight << endl;
+					}
+					else if(vehicleType == "Sedan"){
+						carlist >> strLine;
+						hybrid = strLine;
+						cout << hybrid << endl;
+					}
+					else if(vehicleType == "Luxury"){
+						carlist >> strLine;
+						wifi = strLine;
+						cout << wifi << endl;
+					}
+				}
+				else if(lineNumber == 12){
+					if(vehicleType == "Truck"){
+						carlist >> dLine;
+						bed = dLine;
+						cout << bed << endl;
+					}
+					else if(vehicleType == "Performance"){
+						carlist >> strLine;
+						driveTrain = strLine;
+						cout << driveTrain << endl;
+					}
+					else if(vehicleType == "Sedan"){
+						carlist >> dLine;
+						trunk = dLine;
+						cout << trunk << endl;
+					}
+					else if(vehicleType == "Luxury"){
+						carlist >> strLine;
+						infotainment = strLine;
+						cout << infotainment << endl;
+					}
+					lineNumber++;
+				}
+				linesRead++;}
+				if(vehicleType == "Truck"){
+					cout << "Truck Chosen\n";
+						cars[i] = new Truck(vehicleType, vehicleMake, vehicleModel, vehicleYear, engineCylinders, vehicleSeats, transmissionGears, milesPerGallon, vehiclePrice, tire, towing, bed);
+					}
+				else if(vehicleType == "Performance"){
+					cout << "Performance Chosen\n";
+						cars[i] = new Performance(vehicleType, vehicleMake, vehicleModel, vehicleYear, engineCylinders, vehicleSeats, transmissionGears, milesPerGallon, vehiclePrice, accel, weight, driveTrain);
+					}
+				else if(vehicleType == "Sedan"){
+					cout << "Sedan Chosen\n";
+						cars[i] = new Sedan(vehicleType, vehicleMake, vehicleModel, vehicleYear, engineCylinders, vehicleSeats, transmissionGears, milesPerGallon, vehiclePrice, material, hybrid, trunk);
+					}
+				else if(vehicleType == "Luxury"){
+					cout << "Luxury Chosen\n";
+						cars[i] = new Luxury(vehicleType, vehicleMake, vehicleModel, vehicleYear, engineCylinders, vehicleSeats, transmissionGears, milesPerGallon, vehiclePrice, selfDrive, wifi, infotainment);
+					}
+					*count++;
+				}
 }
+
 
 /*void add_Cars(int* size, Car* *cars, int* count){
 	
@@ -144,14 +231,9 @@ void import_Cars(){
 int add_Cars(int* size, Car* *cars, int* count)
 	{
 		int selection, i = 0, arrayPos = 0;
-		
 		string make, model, driveTrain, seat, hybrid, selfDrive, WiFi, infotainment;
-		
 		int year, cylinders, seats, gears, tire, towing, weight;
-		
 		double mpg, price, bed, accel, trunk;
-		
-		int addCarPos = *count;
 		
 		cout	<< "Add New Car to System" << endl
 				<< "---------------------------------------" << endl
@@ -170,11 +252,9 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Truck" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					std::getline(std::cin >> std::ws, make);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> make;
 					cout	<< "Enter Model: ";
-					std::getline(std::cin >> std::ws, model);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin 	>> model;
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -194,13 +274,13 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Bed Length: ";
 					cin		>> bed;
 					
-					for(i; i < addCarPos; i++)
+					for(i; i < *count; i++)
 						{
 							arrayPos++;
 						}
 						
 					cars[arrayPos] = new Truck("Truck", make, model, year, cylinders, seats, gears, mpg, price, tire, towing, bed);
-					addCarPos++;
+					*count++;
 					
 					system("PAUSE");
 					system("CLS");
@@ -214,11 +294,9 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Performance Car" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					std::getline(std::cin >> std::ws, make);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> make;
 					cout	<< "Enter Model: ";
-					std::getline(std::cin >> std::ws, model);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin 	>> model;
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -236,16 +314,15 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Curb Weight: ";
 					cin		>> weight;
 					cout	<< "Enter Drivetrain Type (FWD/RWD/AWD): ";
-					std::getline(std::cin >> std::ws, driveTrain);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> driveTrain;
 					
-					for(i; i < addCarPos; i++)
+					for(i; i < *count; i++)
 						{
 							arrayPos++;
 						}	
 							
 					cars[arrayPos] = new Performance("Performance", make, model, year, cylinders, seats, gears, mpg, price, accel, weight, driveTrain);
-					addCarPos++;
+					*count++;
 					
 					system("PAUSE");
 					system("CLS");
@@ -259,11 +336,9 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Sedan" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					std::getline(std::cin >> std::ws, make);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> make;
 					cout	<< "Enter Model: ";
-					std::getline(std::cin >> std::ws, model);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin 	>> model;
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -277,21 +352,19 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Price: $";
 					cin		>> price;
 					cout	<< "Enter Seat Material: ";
-					std::getline(std::cin >> std::ws, seat);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> seat;
 					cout	<< "Is this a Hybrid Vehicle? (Yes/No): ";
-					std::getline(std::cin >> std::ws, hybrid);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> hybrid;
 					cout	<< "Enter Trunk Capacity: ";
 					cin		>> trunk;
 					
-					for(i; i < addCarPos; i++)
+					for(i; i < *count; i++)
 						{
 							arrayPos++;
 						}	
 							
 					cars[arrayPos] = new Sedan("Sedan", make, model, year, cylinders, seats, gears, mpg, price, seat, hybrid, trunk);
-					addCarPos++;
+					*count++;
 					
 					system("PAUSE");
 					system("CLS");
@@ -304,11 +377,9 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Add New Luxury Car" << endl
 							<< "---------------------------------------" << endl
 							<< "Enter Make: ";
-					std::getline(std::cin >> std::ws, make);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> make;
 					cout	<< "Enter Model: ";
-					std::getline(std::cin >> std::ws, model);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin 	>> model;
 					cout 	<< "Enter Year: ";
 					cin		>> year;
 					cout	<< "Enter Engine Cylinders: ";
@@ -322,29 +393,26 @@ int add_Cars(int* size, Car* *cars, int* count)
 					cout	<< "Enter Price: $";
 					cin		>> price;
 					cout	<< "Does this car have Self Driving? (Yes/No): ";
-					std::getline(std::cin >> std::ws, selfDrive);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> selfDrive;
 					cout	<< "Does this car have Wi-Fi Connectivity? (Yes/No): ";
-					std::getline(std::cin >> std::ws, WiFi);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> WiFi;
 					cout	<< "Enter Infotainment System: ";
-					std::getline(std::cin >> std::ws, infotainment);
-					//https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
+					cin		>> infotainment;
 					
-					for(i; i < addCarPos; i++)
+					for(i; i < *count; i++)
 						{
 							arrayPos++;
 						}	
 							
 					cars[arrayPos] = new Luxury("Luxury", make, model, year, cylinders, seats, gears, mpg, price, selfDrive, WiFi, infotainment);
-					addCarPos++;
+					*count++;
 					
 					system("PAUSE");
 					system("CLS");
 					break;
 				}
 		}
-		return addCarPos;
+		return *count;
 	}
 
 void view_Cars(int* size, Car* *cars, int* count){
@@ -469,7 +537,89 @@ void search_Cars(int* size, Car* *cars, int* count){
 	}while(choice != 7);		
 }
 
-
+void export_Cars(int* size, Car* *cars, int* count){
+	ofstream carlist;
+		carlist.open("Car-List.txt");
+		string sdata;
+		int idata;
+		double ddata;
+		string type;
+		for(int i=0;i<4;i++){
+			sdata = cars[i] -> getVehicleMake();
+			carlist << sdata;
+			carlist << "\n";
+			sdata = cars[i] -> getVehicleType();
+			type  = cars[i] -> getVehicleType();
+			carlist << sdata;
+			carlist << "\n";
+			sdata = cars[i] -> getVehicleModel();
+			carlist << sdata;
+			carlist << "\n";
+			idata = cars[i] -> getVehicleYear();
+			carlist << idata;
+			carlist << "\n";
+			idata = cars[i] -> getEngineCylinders();
+			carlist << idata;
+			carlist << "\n";
+			idata = cars[i] -> getVehicleSeats();
+			carlist << idata;
+			carlist << "\n";
+			idata = cars[i] -> getTransmissionGears();
+			carlist << idata;
+			carlist << "\n";
+			ddata = cars[i] -> getMilesPerGallon();
+			carlist << ddata;
+			carlist << "\n";
+			ddata = cars[i] -> getVehiclePrice();
+			carlist << ddata;
+			carlist << "\n";
+			if(type == "Truck"){
+				ddata = cars[0] -> getTruckVar1();
+				carlist << ddata;
+				carlist << "\n";
+				idata = cars[0] -> getTruckVar2();
+				carlist << idata;
+				carlist << "\n";
+				ddata = cars[0] -> getTruckVar3();
+				carlist << ddata;
+				carlist << "\n";
+			}
+			else if(type == "Performance"){
+				ddata = cars[1] -> getPerformanceVar1();
+				carlist << ddata;
+				carlist << "\n";
+				idata = cars[1] -> getPerformanceVar2();
+				carlist << idata;
+				carlist << "\n";
+				sdata = cars[1] -> getPerformanceVar3();
+				carlist << sdata;
+				carlist << "\n";
+			}
+			else if(type == "Sedan"){
+				sdata = cars[2] -> getSedanVar1();
+				carlist << sdata;
+				carlist << "\n";
+				sdata = cars[2] -> getSedanVar2();
+				carlist << sdata;
+				carlist << "\n";
+				ddata = cars[2] -> getSedanVar3();
+				carlist << sdata;
+				carlist << "\n";
+			}
+			else if(type == "Luxury"){
+				sdata = cars[3] -> getLuxuryVar1();
+				carlist << sdata;
+				carlist << "\n";
+				sdata = cars[3] -> getLuxuryVar2();
+				carlist << sdata;
+				carlist << "\n";
+				sdata = cars[3] -> getLuxuryVar3();
+				carlist << sdata;
+				carlist << "\n";
+			}
+		}
+		carlist.close();
+}
 
 
 
