@@ -11,23 +11,28 @@ class Truck: public Car
 		public:        
 			Truck();        
 			//~Truck();
-			Truck(string, string, string, int, int, int, int, double, double, int, int, double);
-			void setTruck(int, int, double);
+			Truck(string, string, string, int, int, int, int, double, double, double, int, double);
+			void setTruck(double, int, double);
 			void printInfo();
+			int getTireSize(){
+			};
+			double getTruckVar1();
+			int getTruckVar2();
+			double getTruckVar3();
 		
 		private:
-			int tireSize, towingCapacity;
-			double bedSize;
+			int towingCapacity;
+			double tireSize, bedSize;
 	};
 
 Truck::Truck(string type, string make, string model, int year, int cylinders, int seats, int gears, double mpg, double price,
-int tire, int towing, double bed)
+double tire, int towing, double bed)
 	{
 		setInfo(type, make, model, year, cylinders, seats, gears, mpg, price);
 		setTruck(tire, towing, bed);
 	}
 	
-void Truck::setTruck(int tire, int towing, double bed)
+void Truck::setTruck(double tire, int towing, double bed)
 	{
 		tireSize = tire;
 		towingCapacity = towing;
@@ -47,6 +52,17 @@ void Truck::printInfo()
 				<< "Towing Capacity: " << towingCapacity << " Pounds" << endl
 				<< "Bed Size: " << bedSize << " Feet" << endl;
 	}	
+double Truck::getTruckVar1(){
+	return tireSize;
+};
+
+int Truck::getTruckVar2(){
+	return towingCapacity;
+}
+
+double Truck::getTruckVar3(){
+	return bedSize;
+}
 //--------------------------------------------------------------------------------------------------------------------------
 class Performance : public Car
 	{
@@ -55,6 +71,9 @@ class Performance : public Car
 			Performance(string, string, string, int, int, int, int, double, double, double, int, string);
 			void setPerformance(double, int, string);
 			void printInfo();	
+			double getPerformanceVar1();
+			int getPerformanceVar2();
+			string getPerformanceVar3();
 		
 		private:
 			double acceleration060;
@@ -89,6 +108,15 @@ void Performance::printInfo()
 				<< "Curb Weight: " << curbWeight << " Pounds" << endl
 				<< "Drivetrain Type: " << driveTrainType << endl;
 	}
+double Performance::getPerformanceVar1(){
+	return acceleration060;
+}
+int Performance::getPerformanceVar2(){
+	return curbWeight;
+}
+string Performance::getPerformanceVar3(){
+	return driveTrainType;
+}
 //--------------------------------------------------------------------------------------------------------------------------
 class Sedan : public Car
 	{
@@ -97,6 +125,9 @@ class Sedan : public Car
 			Sedan(string, string, string, int, int, int, int, double, double, string, string, double);
 			void setSedan(string, string, double);
 			void printInfo();
+			string getSedanVar1();
+			string getSedanVar2();
+			double getSedanVar3();
 		
 		private:
 			string seatMaterial, hybridDrive;
@@ -130,6 +161,15 @@ void Sedan::printInfo()
 				<< "Hybrid Drive: " << hybridDrive << endl
 				<< "Trunk Capacity: " << trunkCapacity << " Cubic Feet" << endl;	
 	}
+string Sedan::getSedanVar1(){
+	return seatMaterial;
+}
+string Sedan::getSedanVar2(){
+	return hybridDrive;
+}
+double Sedan::getSedanVar3(){
+	return trunkCapacity;
+}
 //--------------------------------------------------------------------------------------------------------------------------
 class Luxury : public Car
 	{
@@ -138,6 +178,9 @@ class Luxury : public Car
 			Luxury(string, string, string, int, int, int, int, double, double, string, string, string);
 			void setLuxury(string, string, string);
 			void printInfo();
+			string getLuxuryVar1();
+			string getLuxuryVar2();
+			string getLuxuryVar3();
 		
 		private:
 			string selfDriving, WiFiConnectivity, infotainmentSystem;
@@ -170,5 +213,14 @@ void Luxury::printInfo()
 				<< "Wi-Fi Connectivity: " << WiFiConnectivity << endl
 				<< "Infotainment System: " << infotainmentSystem << endl;	
 	}
+string Luxury::getLuxuryVar1(){
+	return selfDriving;
+}
+string Luxury::getLuxuryVar2(){
+	return WiFiConnectivity;
+}
+string Luxury::getLuxuryVar3(){
+	return infotainmentSystem;
+}
 	
 #endif

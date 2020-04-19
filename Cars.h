@@ -25,6 +25,19 @@ class Car
 			int getTransmissionGears();
 			double getMilesPerGallon();
 			double getVehiclePrice();
+			double virtual getTruckVar1(){};
+			int virtual getTruckVar2(){};
+			double virtual getTruckVar3(){};
+			double virtual getPerformanceVar1(){};
+			int virtual getPerformanceVar2(){};
+			string virtual getPerformanceVar3(){};
+			string virtual getSedanVar1(){};
+			string virtual getSedanVar2(){};
+			double virtual getSedanVar3(){};
+			string virtual getLuxuryVar1(){};
+			string virtual getLuxuryVar2(){};
+			string virtual getLuxuryVar3(){};
+			
 	
 		protected:
 			string vehicleType, vehicleMake, vehicleModel;
@@ -49,11 +62,6 @@ void Car::setInfo(string type, string make, string model, int year, int cylinder
 		milesPerGallon = mpg;
 		vehiclePrice = price;
 	}
-	
-//double Car::getPrice()
-//	{
-//		return vehiclePrice;
-//	}
 	
 string Car::getVehicleType()
 	{
@@ -91,4 +99,5 @@ double Car::getVehiclePrice()
 	{
 		return vehiclePrice;
 	}
+	
 #endif
