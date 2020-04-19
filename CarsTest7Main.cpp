@@ -338,7 +338,7 @@ void view_Cars(int* size, Car* *cars, int* count){
 }
 void search_Cars(int* size, Car* *cars, int* count){
 		system("Cls");
-		int ogcount=*count;
+		
 		string inputs;
 		double inputd;
 		int choice;
