@@ -37,7 +37,6 @@ class Car
 			string virtual getLuxuryVar1(){};
 			string virtual getLuxuryVar2(){};
 			string virtual getLuxuryVar3(){};
-			
 	
 		protected:
 			string vehicleType, vehicleMake, vehicleModel;
@@ -62,6 +61,11 @@ void Car::setInfo(string type, string make, string model, int year, int cylinder
 		milesPerGallon = mpg;
 		vehiclePrice = price;
 	}
+	
+//double Car::getPrice()
+//	{
+//		return vehiclePrice;
+//	}
 	
 string Car::getVehicleType()
 	{
@@ -99,5 +103,4 @@ double Car::getVehiclePrice()
 	{
 		return vehiclePrice;
 	}
-	
 #endif

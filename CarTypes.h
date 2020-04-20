@@ -108,7 +108,7 @@ void Performance::printInfo()
 				<< "Curb Weight: " << curbWeight << " Pounds" << endl
 				<< "Drivetrain Type: " << driveTrainType << endl;
 	}
-double Performance::getPerformanceVar1(){
+	double Performance::getPerformanceVar1(){
 	return acceleration060;
 }
 int Performance::getPerformanceVar2(){
