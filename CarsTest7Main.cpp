@@ -356,6 +356,7 @@ void view_Cars(int* size, Car* *cars, int* count){
 			}
 }
 
+v
 void search_Cars(int* size, Car* *cars, int* count){
 		system("Cls");
 		string inputs;
@@ -397,14 +398,15 @@ void search_Cars(int* size, Car* *cars, int* count){
 			for(int i = 0; i < *count; i++){
 				if((inputs)==cars[i]->getVehicleType()){
 					cars[i] -> printInfo();
-					
+					cout<<endl;
 					
 				}
-			}					
+			}	
+			system("pause");
+			system("cls");					
 				break;
 			}
-			system("pause");
-			system("cls");	
+			
 			case 3: {
 		cout << "Enter car Name"<<endl;
 					cin>>inputs;
@@ -414,8 +416,11 @@ void search_Cars(int* size, Car* *cars, int* count){
 					cout<<endl;
 				}
 			}	
+			system("pause");
+			system("cls");
 				break;
 			}
+			
 			case 4: {
 		cout << "Enter car Brand"<<endl;				
 					cin>>inputs;
@@ -426,7 +431,9 @@ void search_Cars(int* size, Car* *cars, int* count){
 					
 					
 			}
-		}	
+		}
+			system("pause");
+			system("cls");	
 				break;
 			}
 			case 5: {
@@ -469,11 +476,6 @@ void search_Cars(int* size, Car* *cars, int* count){
 		}
 	}while(choice != 7);		
 }
-
-
-
-
-
 
 
 
